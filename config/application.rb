@@ -22,5 +22,14 @@ module Workspace
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    paypal_options = {
+    :login => "tech.rvkrish-facilitator_api1.gmail.com",
+    :password => "2E9L8577EY7KKG8T",
+    :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31AbamyhMHRvGMnVHyEsf6gSKWOZho"
+   }
+  ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
+  ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+  config.active_record.raise_in_transactional_callbacks = true
+  
   end
 end

@@ -1,2 +1,10 @@
-<h1>HomePages#index</h1>
-<p>Find me in app/views/home_pages/index.html.erb</p>
+<div class="container-fluid">
+    <div>
+        Register as a student
+        <%= link_to "sign up", new_student_registration_path %>
+        <p>
+            Register as a Faculty
+            <%= link_to "sign up", new_teacher_registration_path %>
+        </p>
+    </div>
+</div>

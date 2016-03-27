@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323173003) do
+ActiveRecord::Schema.define(version: 20160324085745) do
+
+  create_table "courses", force: :cascade do |t|
+    t.string   "course_name"
+    t.string   "course_description"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+  add_index "roles", ["name"], name: "index_roles_on_name"
 
   create_table "students", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -30,6 +48,13 @@ ActiveRecord::Schema.define(version: 20160323173003) do
 
   add_index "students", ["email"], name: "index_students_on_email", unique: true
   add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
+
+  create_table "students_roles", id: false, force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "role_id"
+  end
+
+  add_index "students_roles", ["student_id", "role_id"], name: "index_students_roles_on_student_id_and_role_id"
 
   create_table "teachers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

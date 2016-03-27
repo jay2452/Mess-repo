@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
   get 'home_pages/index'
+  get 'paypal_payment/index'
 
+  get 'paypal_payment/return_url'
+
+  get 'paypal_payment/cancle_url'
+
+  get 'paypal_payment/send_payment'
+
+  post 'paypal_payment/send_payment'
+
+  get 'paypal_payment/index'
   devise_for :teachers
   devise_for :students
   # The priority is based upon order of creation: first created -> highest priority.

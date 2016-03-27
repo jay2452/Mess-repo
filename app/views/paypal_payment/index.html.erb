@@ -1,0 +1,26 @@
+
+
+
+<%= form_tag paypal_payment_send_payment_path do %>
+ <div class="col-md-4"> 
+     
+ </div>
+ <div class="col-md-4">
+     <% if flash[:error].present? %>
+         <div class="alert alert-danger">
+            <%= flash[:error]  %> 
+            <% flash.delete(:error) %>
+         </div>
+     <% end %>
+     <h5> Basic Paypal Credit Card Payment Sample App </h5>
+     <div class="centered"  style="background-color: grey;border-radius: 10%;">
+        <br />
+        <%= render :partial => "payment_partial" %>    
+            <br />
+     </div>
+ </div>
+ <div class="col-md-2">
+     
+ </div>
+ 
+<% end %>
