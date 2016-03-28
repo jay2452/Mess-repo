@@ -1,10 +1,9 @@
-<div class="container-fluid">
-    <div>
-        Register as a student
-        <%= link_to "sign up", new_student_registration_path %>
-        <p>
-            Register as a Faculty
-            <%= link_to "sign up", new_teacher_registration_path %>
-        </p>
+
+<div class="container">
+    <div class="row">
+        <%= render partial: "student" %>
+        <%= render partial: "others" %>
+        <%= render partial: "faculty" %>
     </div>
 </div>
+<%= render partial: "other_products" %>

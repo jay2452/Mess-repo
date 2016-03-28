@@ -22,3 +22,22 @@ The Cloud9 IDE team
 
 Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
 To watch some training videos, visit http://www.youtube.com/user/c9ide
+
+
+# Clear documentation
+
+There are three users 
+
+1. Admin
+2. Student
+3. Faculty
+
+Admin:
+  1. Admin adds courses.
+  2. Admin will be able to see the request of students for courses.
+  3. Admin will assign faculty to students based on the subject.
+  4. Admin Manages students and faculty
+
+Student: 
+  1. Will register into the system.
+  2. Will login into

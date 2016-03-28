@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post 'paypal_payment/send_payment'
 
   get 'paypal_payment/index'
+  resources :courses
   devise_for :teachers
   devise_for :students
   # The priority is based upon order of creation: first created -> highest priority.
