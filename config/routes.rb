@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
+  get 'admin/index'
+
   get 'home_pages/index'
   get 'paypal_payment/index'
 

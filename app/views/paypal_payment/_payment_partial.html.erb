@@ -1,74 +1,29 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 ">
-            <div class="panel panel-default">
+<div class="col-sm-12 text-center">
+    <div class="panel panel-default">
+        <div class="panel-heading default-color">Enter Your Credit Card Information.....!</div>
+        <div class="panel-body">
+            <i class="fa fa-credit-card front-page-icon-font"></i>
+            <div class="form-group">
+             <%= form_for CreditCard.new,:url => "/test" do |f| %>
+                  <div class= "col-sm-12">
+                      <%= f.text_field :name , class: "form-control",placeholder: "Entere Your Name" %><br />
+                  </div>
+                  <div class= "col-sm-12">
+                      <%= f.text_field :name , class: "form-control",placeholder: "Entere Credit Card Number" %><br />
+                  </div>
+                  <div class= "col-sm-6">
+                      <%= f.text_field :name , class: "form-control",placeholder: "Exp. Month" %>
+                  </div>
+                  <div class= "col-sm-4">
+                      <%= f.text_field :name , class: "form-control",placeholder: "Exp. Year" %><br />
+                  </div>
+                  <div class= "col-sm-6">
+                      <%= f.text_field :name , class: "form-control",placeholder: "Enter Cvv" %>
+                  </div>
+                 
+            <% end %>   
                 
-                <div class="panel-body">
-                
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="form-group">
-                                <label for="cardNumber">CARD TYPE</label>
-                                <div class="input-group">
-                                    <select name="cardType">
-                                        <option value="visa">Visa</option>
-                                        <option>MasterCard</option>
-                                        <option>American Express</option>
-                                        <option>American Express Corporate</option>
-                                        <option>Australian BankCard</option>
-                                        <option>Diners Club</option>
-                                        <option>Discover</option>
-                                        <option>JCB</option>
-                                    </select>
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="col-xs-12">
-                            <div class="form-group">
-                                <label for="cardNumber">CARD NUMBER</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" />
-                                    <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-                                </div>
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-7 col-md-7">
-                            <div class="form-group">
-                                <label for="expMonth">EXPIRATION DATE</label>
-                                <div class="col-xs-6 col-lg-6 pl-ziro">
-                                    <input type="text" class="form-control" name="expMonth" placeholder="MM" required data-stripe="exp_month" />
-                                </div>
-                                <div class="col-xs-6 col-lg-6 pl-ziro">
-                                    <input type="text" class="form-control" name="expYear" placeholder="YYYY" required data-stripe="exp_year" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-5 col-md-5 pull-right">
-                            <div class="form-group">
-                                <label for="cvCode">CV CODE</label>
-                                <input type="password" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <button class="btn btn-success btn-lg btn-block" type="submit"> Proceed And Pay</button>
-                        </div>
-                    </div>
-                    <div class="row" style="display:none;">
-                        <div class="col-xs-12">
-                            <p class="payment-errors"></p>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <br />
-             <%= link_to "#{image_tag('https://www.paypalobjects.com/webstatic/mktg/merchant/images/express-checkout-hero.png', height: 50, width: 200)}".html_safe,paypal_payment_send_payment_path, :class => "pull-right"%>
         </div>
-
     </div>
-
-
-                   
+</div>
