@@ -6,11 +6,71 @@
              <%= render partial: "faculty" %>
     </div>
 </div>
-
-
+<br />
+<div class="row">
+    
+<div class="col-sm-10 col-sm-offset-1 text-center">
+    
+        <div class="panel panel-default">
+            <div class="has-arrow-right">
+            <div class="panel-body">
+                <%= render partial: "student_content" %>
+            </div>
+        </div>
+    
+</div>
+</div>
 <script>
 $(document).ready(function(){
-    $('[data-toggle="popover1"]').popover();   
+    $('[data-toggle="popover1"]').popover(
+        {
+        html : true, 
+        content: function() {
+          return $('[data-toggle="popover1"]').html();
+        },
+        title: function() {
+          return $('[data-toggle="popover1"]').html();
+        }
+    }
+        
+        );   
+        
+     $('[data-toggle="popover2"]').popover(
+        {
+        html : true, 
+        content: function() {
+          return $(".student-content").html();
+        },
+        title: function() {
+          return $('[data-toggle="popover2"]').html();
+        }
+    }
+        
+        );   
+        
+     $('[data-toggle="popover3"]').popover(
+        {
+        html : true, 
+        content: function() {
+          return $('[data-toggle="popover3"]').html();
+        },
+        title: function() {
+          return $('[data-toggle="popover3"]').html();
+        }
+    }
+        
+        );   
+});
+$('#example').DataTable({
+  // ajax: ...,
+  // autoWidth: false,
+  // pagingType: 'full_numbers',
+  // processing: true,
+  // serverSide: true,
+
+  // Optional, if you want full pagination controls.
+  // Check dataTables documentation to learn more about available options.
+  // http://datatables.net/reference/option/pagingType
 });
 
 </script>
