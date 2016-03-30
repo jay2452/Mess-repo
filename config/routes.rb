@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :teachers
+  resources :students
+  devise_for :users, controllers: {
+        sessions: 'users/sessions'
+      }
   get 'admin/index'
 
   get 'home_pages/index'

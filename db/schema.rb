@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329173708) do
+ActiveRecord::Schema.define(version: 20160330031833) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "course_name"
@@ -30,6 +30,27 @@ ActiveRecord::Schema.define(version: 20160329173708) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], name: "index_roles_on_name"
+
+  create_table "students", force: :cascade do |t|
+    t.string   "name"
+    t.string   "college"
+    t.string   "branch"
+    t.integer  "year"
+    t.text     "address"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teachers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "experience"
+    t.string   "field"
+    t.text     "address"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

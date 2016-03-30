@@ -1,6 +1,10 @@
 <ul class="nav nav-pills"  style = "background-color:#154360;color:#fff;padding-top:1%;padding-bottom:1%">
     <li role="presentation" class="pull-right btn" style="margin:1%;background-color:#fff;">  
-        <%= link_to "<i class='fa fa-sign-in'></i> Log Out".html_safe, new_teacher_session_path %>
+        <%= link_to "<i class='fa fa-sign-in'></i> Log Out".html_safe, new_user_session_path %>
     </li>
+    <button type="button" role="presentation" class="btn" style="margin:1%;background-color:#fff;color:#666 !important;" data-container="body" data-toggle="popover3" data-placement="bottom" data-content= '<%= render partial: "admin_tools" %>'.html_safe style ="width:100%">  
+        <i class='fa fa-bars menu-icon-font'></i><br />
+        Manage
+    </button>
     
 </ul>

@@ -1,12 +1,27 @@
 <ul class="nav nav-pills"  style = "background-color:#154360;color:#fff;padding-top:1%;padding-bottom:1%">
-    <li role="presentation" class="pull-right btn" style="margin:1%;background-color:#fff;">  
-        <%= link_to "<i class='fa fa-share-alt'></i> Student Sign Up".html_safe, new_student_registration_path %>
-    </li>
-    <li role="presentation" class="pull-right btn" style="margin:1%;background-color:#fff;">  
-        <%= link_to "<i class='fa fa-share-alt'></i> Faculty Sign Up".html_safe, new_teacher_registration_path %>
-    </li>
-    <li role="presentation" class="pull-right btn" style="margin:1%;background-color:#fff;">  
-        <%= link_to "<i class='fa fa-sign-in'></i> Sign In".html_safe, new_teacher_session_path %>
-    </li>
+    
+    <% if user_signed_in? %>
+        <li>
+            Signed in as <%= current_user.email %>
+        </li>
+        
+        <li role="presentation" class="pull-right btn" style="margin:1%;background-color:#fff;">  -->
+            <%= link_to "<i class='fa fa-share-alt'></i> Sign Out".html_safe, destroy_user_session_path, method: :delete %>
+        </li>
+    
+    <% else %>
+        <li role="presentation" class="pull-right btn" style="margin:1%;background-color:#fff;">  
+            <%= link_to "<i class='fa fa-share-alt'></i> Student Sign Up".html_safe, new_user_registration_path %>
+        </li>
+    <% end %>
+    
+    
+    
+    <!--<li role="presentation" class="pull-right btn" style="margin:1%;background-color:#fff;">  -->
+    <!--    <%# link_to "<i class='fa fa-share-alt'></i> Faculty Sign Up".html_safe, new_user_registration_path %>-->
+    <!--</li>-->
+    <!--<li role="presentation" class="pull-right btn" style="margin:1%;background-color:#fff;">  -->
+    <!--    <%# link_to "<i class='fa fa-sign-in'></i> Sign In".html_safe, new_user_session_path %>-->
+    <!--</li>-->
     
 </ul>
