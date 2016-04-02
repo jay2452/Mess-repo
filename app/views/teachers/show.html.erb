@@ -1,29 +1,59 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @teacher.name %>
-</p>
-
-<p>
-  <strong>Experience:</strong>
-  <%= @teacher.experience %>
-</p>
-
-<p>
-  <strong>Field:</strong>
-  <%= @teacher.field %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @teacher.address %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @teacher.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_teacher_path(@teacher) %> |
-<%= link_to 'Back', teachers_path %>
+<div class = "col-sm-4 col-sm-offset-4">
+   <div class="panel panel-default manage-tabs manage-students-panel">
+     <div class="panel-heading default-color"> Faculty Information</div>
+      <div class = "panal-body" style = "margin-left:4%">
+        <p id="notice"><%= notice %></p>
+        <div class="row form-group">
+          <div class="col-sm-6">
+            <strong>Name:</strong>
+          </div>
+          <div class="col-sm-6">
+            <%= @teacher.name %>
+          </div>
+        </div>
+         <div class="row form-group">
+          <div class="col-sm-6">
+            <strong>Experience:</strong>
+          </div>
+          <div class="col-sm-6">
+            <%= @teacher.experience %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-sm-6">
+            <strong>Field:</strong>
+          </div>
+          <div class="col-sm-6">
+            <%= @teacher.field %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-sm-6">
+            <strong>Address</strong>
+          </div>
+          <div class="col-sm-6">
+            <%= @teacher.address %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-sm-6">
+            <strong>User</strong>
+          </div>
+          <div class="col-sm-6">
+            <%= @teacher.user_id %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-sm-6 col-sm-offset-6">
+            <%= link_to 'Edit', edit_student_path(@teacher),  class: "btn btn-default"%>
+            <%= link_to 'Back', admin_index_path,  class: "btn btn-default" %>
+          </div>
+        </div>
+        
+        
+      </div>
+    </div>
+  
+</div>

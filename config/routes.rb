@@ -1,29 +1,52 @@
 Rails.application.routes.draw do
-  resources :teachers
-  resources :students
+  get 'welcome/index'
+
   devise_for :users, controllers: {
         sessions: 'users/sessions'
       }
-  get 'admin/index'
+ 
 
   get 'home_pages/index'
   get 'paypal_payment/index'
-
   get 'paypal_payment/return_url'
-
   get 'paypal_payment/cancle_url'
-
   get 'paypal_payment/send_payment'
-
   post 'paypal_payment/send_payment'
-
   get 'paypal_payment/index'
-  resources :courses
+  
+  
+  authenticated :user , lambda {|u| u.has_role? :admin} do
+      root "admin#index", :as => "admin_root"
+      get 'admin/index'
+      resources :teachers
+      resources :students
+      resources :courses
+      resources :student_courses
+  end
+  authenticated :user, lambda {|u| u.has_role? :student} do
+       root "welcome#welcome_student", :as => "student_root"
+       get 'welcome/welcome_student'
+       get "courses/available_courses", :as => "available_courses"
+       get "/students/add_course"
+  end
+  authenticated :user, lambda {|u| u.has_role? :teacher} do
+       root "welcome#welcome_teacher", :as => "teacher_root"
+       get 'welcome/welcome_teacher'
+  end
+  authenticated :user do
+    root "welcome#index", :as => "welcome_root"
+    post "students" => "students#create"
+    post "teachers" => "teachers#create"
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'home_pages#index'
+  unauthenticated do
+    root 'home_pages#index'
+  end
+
+  get '*path' => redirect('/')
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-
+   layout "admin", except: [:available_courses]
   # GET /courses
   # GET /courses.json
   def index
@@ -60,7 +60,9 @@ class CoursesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  def available_courses
+    @courses = Course.all - current_user.student.courses
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course

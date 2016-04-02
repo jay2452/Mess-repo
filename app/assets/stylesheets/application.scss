@@ -18,6 +18,11 @@
 @import "bootstrap";
 @import "font-awesome";
 
+.notice{
+    @extend .alert;
+    @extend .alert-info;
+    
+}
 .default-color{
     background-color:#154360 !important;
     color:#fff !important;
@@ -30,4 +35,46 @@
 }
 .popover{
     max-width: 100%; /* Max Width of the popover (depending on the container!) */
+}
+.popover-inside-button{
+    width:100%; 
+    margin:2%;  
+}
+
+// Spinner
+
+.spinner {
+  display: inline-block;
+  opacity: 0;
+  width: 0;
+
+  -webkit-transition: opacity 0.25s, width 0.25s;
+  -moz-transition: opacity 0.25s, width 0.25s;
+  -o-transition: opacity 0.25s, width 0.25s;
+  transition: opacity 0.25s, width 0.25s;
+}
+
+.has-spinner.active {
+  cursor:progress;
+}
+
+.has-spinner.active .spinner {
+  opacity: 1;
+  width: auto; /* This doesn't work, just fix for unkown width elements */
+}
+
+.has-spinner.btn-mini.active .spinner {
+    width: 10px;
+}
+
+.has-spinner.btn-small.active .spinner {
+    width: 13px;
+}
+
+.has-spinner.btn.active .spinner {
+    width: 16px;
+}
+
+.has-spinner.btn-large.active .spinner {
+    width: 19px;
 }

@@ -1,6 +1,6 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
-
+  layout "admin"
   # GET /teachers
   # GET /teachers.json
   def index
@@ -26,14 +26,25 @@ class TeachersController < ApplicationController
   def create
     @teacher = Teacher.new(teacher_params)
 
-    respond_to do |format|
-      if @teacher.save
-        format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
-        format.json { render :show, status: :created, location: @teacher }
-      else
-        format.html { render :new }
-        format.json { render json: @teacher.errors, status: :unprocessable_entity }
+      if current_user.has_role? :admin
+        respond_to do |format|
+          if @teacher.save
+            format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
+            format.json { render :show, status: :created, location: @teacher }
+          else
+            format.html { render :new }
+            format.json { render json: @teacher.errors, status: :unprocessable_entity }
+          end
       end
+    else
+      if @teacher.save
+          @teacher.user_id = current_user.id
+          @teacher.save
+          current_user.add_role :teacher
+          redirect_to "/welcome/welcome_student"
+        else
+          redirect_to "/welcome/index"
+        end
     end
   end
 

@@ -1,6 +1,12 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
-
+  layout "admin"
+  #Add Course to student
+  def add_course
+    current_user.student.student_courses.create({course_id: params[:course_id],state: "applied"})
+    render :text => "Successfully Applied"
+  end
+  
   # GET /students
   # GET /students.json
   def index
@@ -25,15 +31,27 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
     @student = Student.new(student_params)
-
-    respond_to do |format|
-      if @student.save
-        format.html { redirect_to @student, notice: 'Student was successfully created.' }
-        format.json { render :show, status: :created, location: @student }
-      else
-        format.html { render :new }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
+    if current_user.has_role? :admin
+      respond_to do |format|
+        if @student.save
+          #TODO adding role to student
+          format.html { redirect_to @student, notice: 'Student was successfully created.' }
+          format.json { render :show, status: :created, location: @student }
+        else
+          format.html { render :new }
+          format.json { render json: @student.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      if @student.save
+          @student.user_id = current_user.id
+          @student.save
+          current_user.add_role :student
+          redirect_to "/welcome/welcome_student"
+        else
+          redirect_to "/welcome/index"
+        end
+      
     end
   end
 
@@ -50,7 +68,7 @@ class StudentsController < ApplicationController
       end
     end
   end
-
+  
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
