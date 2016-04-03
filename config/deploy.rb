@@ -4,7 +4,7 @@ lock '3.4.0'
 set :application, 'Mess-repo'
 set :repo_url, 'git@github.com:jay2452/Mess-repo.git'
 set :default_stage, "production"
-set :deploy_to, "/home/jayant/Mess-repo"
+set :deploy_to, "/srv/Mess-repo"
 set :port, 22
 set :domain, "128.199.195.86"
 set :scm, :git
