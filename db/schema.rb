@@ -11,14 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160401121521) do
+ActiveRecord::Schema.define(version: 20160405111422) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "course_name"
     t.string   "course_description"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.float    "course_cost"
   end
+
+  create_table "courses_videos", id: false, force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "video_id"
+  end
+
+  add_index "courses_videos", ["course_id", "video_id"], name: "courses_videos_index", unique: true
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -85,5 +93,12 @@ ActiveRecord::Schema.define(version: 20160401121521) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "url"
+    t.string   "video_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

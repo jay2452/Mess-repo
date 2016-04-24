@@ -78,3 +78,33 @@
 .has-spinner.btn-large.active .spinner {
     width: 19px;
 }
+
+.video-box{
+    height:220px;
+    width:391px;
+    position:relative;
+}
+
+.video-thumbnail{
+    z-index:300;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+}
+
+.video-frame{
+    z-index:100;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+}
+
+.thumbnail-link .video-thumbnail{
+    display:block;
+}
+
+.thumbnail-link:hover .video-thumbnail{
+    display:none;
+}

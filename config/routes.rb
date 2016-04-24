@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+ 
+  
   get 'welcome/index'
 
   devise_for :users, controllers: {
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
   authenticated :user , lambda {|u| u.has_role? :admin} do
       root "admin#index", :as => "admin_root"
       get 'admin/index'
+       resources :videos
       resources :teachers
       resources :students
       resources :courses
@@ -28,6 +31,22 @@ Rails.application.routes.draw do
        get 'welcome/welcome_student'
        get "courses/available_courses", :as => "available_courses"
        get "/students/add_course"
+       get 'videos/display_video'
+       get 'videos/list_video'
+       get 'student_front_page/pdf'
+       get 'student_front_page/video'
+       get 'student_front_page/certification'
+       get 'student_front_page/write_exam'
+       get 'student_front_page/schedule_exam'
+       get 'student_front_page/view_report'
+       get 'student_front_page/share_thoughts'
+       get 'student_front_page/chat_rooms'
+       get 'student_front_page/groups'
+       get 'student_front_page/make_a_note'
+       get 'student_front_page/upcomming_events'
+       get 'student_front_page/university_syllabus'
+       get 'student_front_page/help_desk'
+       get 'student_front_page/settings'
   end
   authenticated :user, lambda {|u| u.has_role? :teacher} do
        root "welcome#welcome_teacher", :as => "teacher_root"

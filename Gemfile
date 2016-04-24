@@ -71,3 +71,5 @@ gem 'google-webfonts-rails'
 # gem 'aws-sdk', '< 2.0'
 gem 'friendly_id'
 gem 'activemerchant'
+
+gem 'habtm_generator', :group => :development

@@ -124,6 +124,8 @@ GEM
       activesupport (>= 4.1.0)
     google-webfonts-rails (0.0.4)
       activesupport (> 3.2.0, < 5.0)
+    habtm_generator (0.5)
+      activerecord
     haml (4.0.7)
       tilt
     i18n (0.7.0)
@@ -288,6 +290,7 @@ DEPENDENCIES
   font-awesome-rails
   friendly_id
   google-webfonts-rails
+  habtm_generator
   jbuilder (~> 2.0)
   jquery-datatables-rails (~> 3.3.0)
   jquery-rails
