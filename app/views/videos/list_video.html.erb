@@ -2,7 +2,7 @@
     <% @free_courses.each{ |course|%>
         <% course.videos.each{ |video|%>
             <li class="list-group-item list-group-item-info" style="line-height:30px;" >
-                <%= link_to "#{course.course_description}: #{video.url}", videos_display_video_path(video_id: video.id) %>
+                <%= link_to "#{video.type}: #{video.url}", videos_display_video_path(video_id: video.id) %>
             </li><br />
         <% } %>
     <% } %>
