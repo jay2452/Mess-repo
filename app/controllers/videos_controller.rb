@@ -61,7 +61,7 @@ class VideosController < ApplicationController
     end
   end
   def list_video
-      @free_courses = Course.where(course_cost: 0)
+      @course = Course.find(params[:course_id])
     end
     def display_video
       @video = Video.find(params[:video_id])
