@@ -47,6 +47,7 @@ Rails.application.routes.draw do
        get 'student_front_page/university_syllabus'
        get 'student_front_page/help_desk'
        get 'student_front_page/settings'
+       get 'student_front_page/projects'
   end
   authenticated :user, lambda {|u| u.has_role? :teacher} do
        root "welcome#welcome_teacher", :as => "teacher_root"
