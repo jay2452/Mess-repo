@@ -17,7 +17,7 @@
   </thead>
 
   <tbody>
-    <% @project_tackings.each do |project_tacking| %>
+    <% @tracking.each do |project_tacking| %>
       <tr>
         <td><%= project_tacking.project_id %></td>
         <td><%= project_tacking.student_id %></td>
@@ -36,4 +36,27 @@
 
 <br>
 
-<%= link_to 'New Project tacking', new_project_tacking_path %>
+<%= link_to 'New Project tacking', new_project_tacking_path %> | <%= link_to "Add a new key", '#', :"data-toggle"  => "modal", :"data-target" => "#myModal" %>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @key, {controller: "keys_controller", action: 'create'} do |f| %>
+          <%= f.input :name %>
+          <%= f.input :value %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

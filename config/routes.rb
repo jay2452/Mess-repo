@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
  
   
+  resources :assignments
+  resources :assignment_trackings
+  # get 'keys/index'
+
+  resources :keys
+
   resources :project_tackings
   resources :projects
   get 'welcome/index'
@@ -50,6 +56,7 @@ Rails.application.routes.draw do
        get 'student_front_page/help_desk'
        get 'student_front_page/settings'
        get 'student_front_page/projects'
+       get 'student_front_page/assignments'
   end
   authenticated :user, lambda {|u| u.has_role? :teacher} do
        root "welcome#welcome_teacher", :as => "teacher_root"

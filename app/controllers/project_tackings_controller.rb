@@ -1,10 +1,15 @@
 class ProjectTackingsController < ApplicationController
   before_action :set_project_tacking, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /project_tackings
   # GET /project_tackings.json
   def index
-    @project_tackings = ProjectTacking.all
+    @user = current_user
+    @student = current_user.student
+    @key = Key.new
+    # @project_tackings = ProjectTacking.all
+    @tracking = @student.project_tackings
   end
 
   # GET /project_tackings/1
