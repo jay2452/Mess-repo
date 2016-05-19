@@ -30,6 +30,7 @@ class ProjectTackingsController < ApplicationController
   # POST /project_tackings.json
   def create
     @project_tacking = ProjectTacking.new(project_tacking_params)
+    @project_tacking.student_id = current_user.student.id
 
     respond_to do |format|
       if @project_tacking.save
@@ -74,6 +75,6 @@ class ProjectTackingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_tacking_params
-      params.require(:project_tacking).permit(:project_id, :student_id, :git_url, :key, :value, :completed, :remaining)
+      params.require(:project_tacking).permit(:project_id, :git_url, :key, :value, :completed, :remaining)
     end
 end

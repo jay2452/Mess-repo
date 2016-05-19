@@ -1,5 +1,6 @@
 class StudentFrontPageController < ApplicationController
   before_filter :get_courses
+  
   def pdf
   end
 
