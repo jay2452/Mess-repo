@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
  
   
+  resources :keys
   resources :assignments
   resources :assignment_trackings
   # get 'keys/index'

@@ -7,7 +7,6 @@ class ProjectTackingsController < ApplicationController
   def index
     @user = current_user
     @student = current_user.student
-    @key = Key.new
     # @project_tackings = ProjectTacking.all
     @tracking = @student.project_tackings
   end

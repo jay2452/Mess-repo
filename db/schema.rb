@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518173125) do
+ActiveRecord::Schema.define(version: 20160521162521) do
 
   create_table "assignment_trackings", force: :cascade do |t|
     t.integer  "assignment_id"
